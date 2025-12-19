@@ -9,3 +9,8 @@
 
 controllers:
     resource: routing.controllers
+
+
+blog_list:
+    path: /blog
+    controller: App\Controller\BlogController::list
