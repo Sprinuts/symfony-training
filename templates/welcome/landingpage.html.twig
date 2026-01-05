@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Landing Page{% endblock %}
+
+{% block stylesheets %}
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f4f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: white;
+            padding: 50px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 30px;
+            color: #333;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            margin: 10px;
+            font-size: 16px;
+            color: white;
+            background-color: #007bff;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background-color 0.2s;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .secondary {
+            background-color: #28a745;
+        }
+        .secondary:hover {
+            background-color: #1e7e34;
+        }
+    </style>
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>Welcome to Symfony Training!</h1>
+        <a href="{{ path('app_login') }}" class="btn">Login</a>
+        <a href="{{ path('app_register') }}" class="btn secondary">Register</a>
+    </div>
+{% endblock %}

@@ -1,0 +1,111 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block stylesheets %}
+    <style>
+        body {
+            background: #f0f4f8;
+        }
+        .register-container {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .register-card {
+            background: #fff;
+            padding: 36px 32px 32px 32px;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+            width: 100%;
+            max-width: 370px;
+        }
+        .register-card h1 {
+            margin-bottom: 24px;
+            color: #333;
+            font-size: 2rem;
+            font-weight: 700;
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 18px;
+            text-align: left;
+        }
+        .form-control {
+            width: 85%;
+            min-width: 160px;
+            max-width: 220px;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+            padding: 10px 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 1rem;
+            margin-bottom: 2px;
+            background: #f8fafc;
+            transition: border-color 0.2s;
+        }
+        .form-control:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+        .form-error-message {
+            color: #d8000c;
+            background: #ffd2d2;
+            border-radius: 6px;
+            padding: 8px 12px;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+        .btn-register {
+            width: 100%;
+            padding: 12px;
+            font-size: 1.1rem;
+            background: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: background 0.2s;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .btn-register:hover {
+            background: #0056b3;
+        }
+        .form-check {
+            margin-bottom: 18px;
+            text-align: left;
+        }
+    </style>
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+<div class="register-container">
+    <div class="register-card">
+        <h1>Register</h1>
+        {% if registrationForm.vars.errors|length > 0 %}
+            <div class="form-error-message">
+                {{ form_errors(registrationForm) }}
+            </div>
+        {% endif %}
+        {{ form_start(registrationForm) }}
+            <div class="form-group">
+                {{ form_row(registrationForm.email) }}
+            </div>
+            <div class="form-group">
+                {{ form_row(registrationForm.plainPassword, {
+                    label: 'Password'
+                }) }}
+            </div>
+            <div class="form-check">
+                {{ form_row(registrationForm.agreeTerms) }}
+            </div>
+            <button type="submit" class="btn-register">Register</button>
+        {{ form_end(registrationForm) }}
+    </div>
+</div>
+{% endblock %}
